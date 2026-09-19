@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Find PG - CampusNest</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 48%27%3E%3Cpath d=%27M5.5 23.5 24 7l18.5 16.5%27 fill=%27none%27 stroke=%27%237c3aed%27 stroke-width=%273.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M10 21v17.5A3.5 3.5 0 0 0 13.5 42h21a3.5 3.5 0 0 0 3.5-3.5V21M19 42V29h10v13%27 fill=%27none%27 stroke=%27%237c3aed%27 stroke-width=%273.5%27/%3E%3C/svg%3E">
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <div class="nav-top"><a class="brand" href="./find-pg.html" aria-label="CampusNest Home">
+                <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 48 48" role="img"><path d="M7 22.5 24 8l17 14.5v16A3.5 3.5 0 0 1 37.5 42h-27A3.5 3.5 0 0 1 7 38.5v-16Z" fill="currentColor" opacity=".16"/><path d="M5.5 23.5 24 7l18.5 16.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 21v17.5A3.5 3.5 0 0 0 13.5 42h21a3.5 3.5 0 0 0 3.5-3.5V21" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M19 42V29h10v13M16 24h.01M32 24h.01" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>CampusNest</span></a><div class="nav-account"><a href="./login.html" class="login-link">Login / Register</a><span id="userBadge"></span></div></div>
+            <nav><a href="./index.html">Home</a><a class="active" href="./find-pg.html">Find PG</a><a
+                    href="./create-vacancy.html">Post Vacancy</a></nav>
+        </div>
+    </header>
+    <main>
+        <section class="page-head">
+            <h1>Welcome to CampusNest!</h1>
+            <p>Your direct platform to discover the best student accommodations. Search real vacancies posted by students, view contact details to apply instantly.</p>
+        </section>
+        <section class="filters card">
+            <input id="search" placeholder="Search PG, locality or landmark">
+            <select id="genderFilter">
+                <option value="">Select Gender</option>
+                <option value="Boys">Boys Only</option>
+                <option value="Girls">Girls Only</option>
+            </select>
+            <select id="maxRent">
+                <option value="">Select Rent</option>
+                <option value="5000">Up to Rs. 5,000</option>
+                <option value="7000">Up to Rs. 7,000</option>
+                <option value="10000">Up to Rs. 10,000</option>
+            </select>
+            <select id="maxDistance">
+                <option value="">Select Distance</option>
+                <option value="1">Within 1 km</option>
+                <option value="2">Within 2 km</option>
+                <option value="5">Within 5 km</option>
+            </select>
+            <button class="btn" id="refresh">Search</button>
+        </section>
+
+        <div class="gender-legend">
+            <span>Vacancy type:</span>
+            <span class="legend-item"><span class="legend-dot legend-boys"></span> Boys</span>
+            <span class="legend-item"><span class="legend-dot legend-girls"></span> Girls</span>
+            <span class="legend-item"><span class="legend-dot legend-any"></span> Any</span>
+        </div>
+        <p id="count"></p>
+        <section id="pgList" class="pg-grid"></section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

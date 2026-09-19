@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Post Vacancy - CampusNest</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 48%27%3E%3Cpath d=%27M5.5 23.5 24 7l18.5 16.5%27 fill=%27none%27 stroke=%27%237c3aed%27 stroke-width=%273.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M10 21v17.5A3.5 3.5 0 0 0 13.5 42h21a3.5 3.5 0 0 0 3.5-3.5V21M19 42V29h10v13%27 fill=%27none%27 stroke=%27%237c3aed%27 stroke-width=%273.5%27/%3E%3C/svg%3E">
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <div class="nav-top"><a class="brand" href="./find-pg.html" aria-label="CampusNest Home">
+                <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 48 48" role="img"><path d="M7 22.5 24 8l17 14.5v16A3.5 3.5 0 0 1 37.5 42h-27A3.5 3.5 0 0 1 7 38.5v-16Z" fill="currentColor" opacity=".16"/><path d="M5.5 23.5 24 7l18.5 16.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 21v17.5A3.5 3.5 0 0 0 13.5 42h21a3.5 3.5 0 0 0 3.5-3.5V21" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M19 42V29h10v13M16 24h.01M32 24h.01" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>CampusNest</span></a><div class="nav-account"><a href="./login.html" class="login-link">Login / Register</a><span id="userBadge"></span></div></div>
+            <nav><a href="./index.html">Home</a><a href="./find-pg.html">Find PG</a><a class="active"
+                    href="./create-vacancy.html">Post Vacancy</a></nav>
+        </div>
+    </header>
+    <main class="form-wrap">
+        <section class="card">
+            <h1>Post Vacancy</h1>
+            <p>Only logged-in students can publish vacancies.</p>
+            <form id="vacancyForm" class="form-grid">
+                <label>PG / Room Name*<input name="pgName" required></label>
+                <label>Area / Locality*<input name="locality" required></label>
+                <label>Monthly Rent (Rs.)*<input type="number" name="rent" min="0" required></label>
+                <label>Students Currently Living<input type="number" name="studentsLiving" min="0" required></label>
+                <label>Vacancies Available*<input type="number" name="vacancies" min="1" required></label>
+                <label>Distance from College (km)*<input type="number" name="distance" min="0" step="0.1" required></label>
+                <label>Gender Category*
+                    <select name="genderType" required>
+                        <option value="Any">Any </option>
+                        <option value="Boys">Boys Only</option>
+                        <option value="Girls">Girls Only</option>
+                    </select>
+                </label>
+                <label>Contact Number*<input type="tel" name="contact" required placeholder="e.g. +91 9876543210"></label>
+                <label class="full">Exact Location on Google Maps* <input name="location" required></label>
+                <label class="full">Short Description<textarea name="description" rows="4"></textarea></label>
+                <button class="btn full" type="submit">Publish Vacancy</button>
+            </form>
+            <p id="vacancyMsg" class="msg"></p>
+        </section>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>

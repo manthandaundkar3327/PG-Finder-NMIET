@@ -1,0 +1,17 @@
+{
+  "name": "campusnest-pg-finder",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Static frontend served by a Node.js/Express backend for a student PG vacancy platform",
+  "main": "./server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "better-sqlite3": "^12.4.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2"
+  }
+}
