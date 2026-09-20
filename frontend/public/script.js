@@ -28,7 +28,7 @@ async function loadMyVacancies() {
                         <span class="tag">${p.students_living} students living</span>
                     </div>
                 </div>
-                <div class="my-vacancy-actions"><a class="btn edit" href="./edit-vacancy.html">Edit Details</a><button class="btn danger" type="button" onclick="removeVacancy(${p.id}, '${escapeHtml(p.pg_name).replace(/'/g, '&#39;')}')">Remove Vacancy</button></div>
+                <div class="my-vacancy-actions"><a class="btn edit" href="./edit-vacancy.html?id=${p.id}">Edit Details</a><button class="btn danger" type="button" onclick="removeVacancy(${p.id}, '${escapeHtml(p.pg_name).replace(/'/g, '&#39;')}')">Remove Vacancy</button></div>
             </article>`;
         }).join('');
     } catch (e) {
@@ -93,12 +93,12 @@ async function loadPGs() {
 
 function setupLogin() { const f = document.getElementById('loginForm'); if (!f) return; f.addEventListener('submit', async e => { e.preventDefault(); const msg = document.getElementById('loginMsg'); try { const body = Object.fromEntries(new FormData(f)); await api('/api/login', { method: 'POST', body: JSON.stringify(body) }); msg.textContent = 'Login successful.'; f.reset(); loadMyVacancies(); updateUserBadge() } catch (err) { msg.textContent = err.message } }) }
 function setupRegister() { const f = document.getElementById('registerForm'); if (!f) return; f.addEventListener('submit', async e => { e.preventDefault(); const msg = document.getElementById('registerMsg'); try { const body = Object.fromEntries(new FormData(f)); await api('/api/register', { method: 'POST', body: JSON.stringify(body) }); msg.textContent = 'Account created successfully.'; f.reset(); loadMyVacancies(); updateUserBadge() } catch (err) { msg.textContent = err.message } }) }
-function setupVacancy() { const f = document.getElementById('vacancyForm'); if (!f || location.pathname.endsWith('./edit-vacancy.html')) return; f.addEventListener('submit', async e => { e.preventDefault(); const msg = document.getElementById('vacancyMsg'); try { const s = await api('/api/session'); if (!s.loggedIn) { msg.textContent = 'Please log in before posting a vacancy.'; return } const body = Object.fromEntries(new FormData(f)); await api('/api/pgs', { method: 'POST', body: JSON.stringify(body) }); msg.textContent = 'Vacancy published successfully!'; f.reset() } catch (err) { msg.textContent = err.message } }) }
+function setupVacancy() { const f = document.getElementById('vacancyForm'); if (!f || location.pathname.endsWith('/edit-vacancy.html')) return; f.addEventListener('submit', async e => { e.preventDefault(); const msg = document.getElementById('vacancyMsg'); try { const s = await api('/api/session'); if (!s.loggedIn) { msg.textContent = 'Please log in before posting a vacancy.'; return } const body = Object.fromEntries(new FormData(f)); await api('/api/pgs', { method: 'POST', body: JSON.stringify(body) }); msg.textContent = 'Vacancy published successfully!'; f.reset() } catch (err) { msg.textContent = err.message } }) }
 
 
 async function setupEditVacancy() {
     const f = document.getElementById('vacancyForm');
-    if (!f || !location.pathname.endsWith('./edit-vacancy.html')) return;
+    if (!f || !location.pathname.endsWith('/edit-vacancy.html')) return;
     const msg = document.getElementById('editMsg');
     const id = new URLSearchParams(location.search).get('id');
     if (!id) { msg.textContent = 'Invalid vacancy.'; return; }
