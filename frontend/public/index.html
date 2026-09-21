@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>CampusNest - PG Finder</title>
+    <title>CampusNMIET - PG Finder</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 48%27%3E%3Cpath d=%27M5.5 23.5 24 7l18.5 16.5%27 fill=%27none%27 stroke=%27%237c3aed%27 stroke-width=%273.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M10 21v17.5A3.5 3.5 0 0 0 13.5 42h21a3.5 3.5 0 0 0 3.5-3.5V21M19 42V29h10v13%27 fill=%27none%27 stroke=%27%237c3aed%27 stroke-width=%273.5%27/%3E%3C/svg%3E">
 </head>
@@ -12,21 +12,28 @@
 <body>
     <header>
         <div class="nav">
-            <div class="nav-top"><a class="brand" href="./index.html" aria-label="CampusNest Home">
-                <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 48 48" role="img"><path d="M7 22.5 24 8l17 14.5v16A3.5 3.5 0 0 1 37.5 42h-27A3.5 3.5 0 0 1 7 38.5v-16Z" fill="currentColor" opacity=".16"/><path d="M5.5 23.5 24 7l18.5 16.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 21v17.5A3.5 3.5 0 0 0 13.5 42h21a3.5 3.5 0 0 0 3.5-3.5V21" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M19 42V29h10v13M16 24h.01M32 24h.01" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>CampusNest</span></a><div class="nav-account"><a href="./login.html" class="login-link">Login / Register</a><span id="userBadge"></span></div></div>
+            <div class="nav-top"><a class="brand" href="./index.html" aria-label="CampusNMIET Home">
+                <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 48 48" role="img"><path d="M7 22.5 24 8l17 14.5v16A3.5 3.5 0 0 1 37.5 42h-27A3.5 3.5 0 0 1 7 38.5v-16Z" fill="currentColor" opacity=".16"/><path d="M5.5 23.5 24 7l18.5 16.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 21v17.5A3.5 3.5 0 0 0 13.5 42h21a3.5 3.5 0 0 0 3.5-3.5V21" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 42V29h10v13M16 24h.01M32 24h.01" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>CampusNMIET</span></a><div class="nav-account"><a href="./login.html" class="login-link">Login / Register</a><span id="userBadge"></span></div></div>
             <nav><a class="active" href="./index.html">Home</a><a href="./find-pg.html">Find PG</a><a href="./create-vacancy.html">Post
                     Vacancy</a></nav>
         </div>
     </header>
     <main>
         <section class="hero">
-            <div>
+            <div class="hero-copy">
                 <p class="eyebrow">STUDENT PG DISCOVERY PLATFORM</p>
-                <h1>Find a PG near our college.</h1>
+                <h1>Find The PG's,<br><em>Close to campus.</em></h1>
                 <p>Students can post real vacancies and discover available rooms with rent, distance
                     and exact location.</p>
                 <div class="actions"><a class="btn" href="./find-pg.html">Find Available PGs</a><a class="btn secondary"
                         href="./create-vacancy.html">Post a Vacancy</a></div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+                <div class="floating-card location-card"><span class="mini-icon">⌖</span><span><b>Near NMIET</b><small>0.8 km away</small></span></div>
+                <div class="home-model">
+                    <div class="roof"></div><div class="house-front"><span class="window"></span><span class="window"></span><span class="door"></span></div><div class="house-side"></div>
+                </div>
             </div>
         </section>
         <section class="cards">
@@ -44,7 +51,7 @@
             </div>
         </section>
     </main>
-    <footer>CampusNest • College DSA Project</footer>
+    <footer>CampusNMIET • College DSA Project</footer>
     <script src="./script.js"></script>
 </body>
 

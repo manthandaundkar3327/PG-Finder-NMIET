@@ -48,10 +48,10 @@ if (db.prepare('SELECT COUNT(*) AS count FROM pg_vacancies').get().count === 0) 
     (user_id,pg_name,locality,rent,students_living,vacancies,distance,location,description,gender_type,contact)
     VALUES (?,?,?,?,?,?,?,?,?,?,?)`);
   [
-    ['Green View PG','College Road',6500,3,1,0.7,'Near Main Gate','Quiet student-friendly PG near campus.','Boys','+91 9876543210'],
-    ['Student Square','University Chowk',5500,2,2,1.2,'Opposite City Library','Affordable shared rooms with Wi-Fi.','Girls','+91 8765432109'],
-    ['Maple Residency','Shivaji Nagar',8500,2,1,2.1,'Shivaji Nagar Bus Stop','Spacious room with attached facilities.','Boys','+91 7654321098'],
-    ['Campus Corner','College Road',4800,3,1,0.9,'Near College Road','Budget-friendly shared accommodation.','Any','+91 6543210987']
+    ['Green View PG', 'College Road', 6500, 3, 1, 0.7, 'Near Main Gate', 'Quiet student-friendly PG near campus.', 'Boys', '+91 9876543210'],
+    ['Student Square', 'University Chowk', 5500, 2, 2, 1.2, 'Opposite City Library', 'Affordable shared rooms with Wi-Fi.', 'Girls', '+91 8765432109'],
+    ['Maple Residency', 'Shivaji Nagar', 8500, 2, 1, 2.1, 'Shivaji Nagar Bus Stop', 'Spacious room with attached facilities.', 'Boys', '+91 7654321098'],
+    ['Campus Corner', 'College Road', 4800, 3, 1, 0.9, 'Near College Road', 'Budget-friendly shared accommodation.', 'Any', '+91 6543210987']
   ].forEach(p => insert.run(user.id, ...p));
 }
 
@@ -74,13 +74,13 @@ function requireAuth(req, res, next) {
 }
 
 // ---------------- API ----------------
-app.get('/api/health', (req, res) => res.json({ ok: true, service: 'CampusNest API' }));
+app.get('/api/health', (req, res) => res.json({ ok: true, service: 'CampusNMIET API' }));
 
 app.get('/api/session', (req, res) => {
   if (!req.session.userId) return res.json({ loggedIn: false });
   const user = db.prepare('SELECT id,name,email FROM users WHERE id=?').get(req.session.userId);
   if (!user) {
-    req.session.destroy(() => {});
+    req.session.destroy(() => { });
     return res.json({ loggedIn: false });
   }
   res.json({ loggedIn: true, user: publicUser(user) });
@@ -162,10 +162,10 @@ app.post('/api/pgs', requireAuth, (req, res) => {
   const info = db.prepare(`INSERT INTO pg_vacancies
     (user_id,pg_name,locality,rent,students_living,vacancies,distance,location,description,gender_type,contact)
     VALUES(?,?,?,?,?,?,?,?,?,?,?)`).run(
-      req.session.userId,
-      String(pgName).trim(), String(locality).trim(), ...numeric,
-      String(location).trim(), String(description).trim(), genderType, String(contact).trim()
-    );
+    req.session.userId,
+    String(pgName).trim(), String(locality).trim(), ...numeric,
+    String(location).trim(), String(description).trim(), genderType, String(contact).trim()
+  );
 
   const row = db.prepare(`SELECT p.*,u.name AS posted_by
     FROM pg_vacancies p JOIN users u ON u.id=p.user_id WHERE p.id=?`).get(info.lastInsertRowid);
@@ -204,5 +204,5 @@ app.get('/', (req, res) => res.sendFile(path.join(PUBLIC_DIR, 'find-pg.html')));
 app.use('/api', (req, res) => res.status(404).json({ error: 'API endpoint not found.' }));
 
 app.listen(PORT, () => {
-  console.log(`CampusNest running at http://localhost:${PORT}`);
+  console.log(`CampusNMIET running at http://localhost:${PORT}`);
 });
