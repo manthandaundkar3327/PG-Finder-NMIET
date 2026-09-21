@@ -1,4 +1,4 @@
-# CampusNest PG Finder — Static Frontend + Node.js Backend
+# CampusNMIET PG Finder — Static Frontend + Node.js Backend
 
 This version uses a **static frontend** (HTML, CSS and browser JavaScript) and a **Node.js + Express backend**. The backend serves the static files and provides REST-style APIs for login, registration, PG search and vacancy publishing.
 
