@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Login - CampusNMIET</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 48%27%3E%3Cpath d=%27M5.5 23.5 24 7l18.5 16.5%27 fill=%27none%27 stroke=%27%237c3aed%27 stroke-width=%273.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M10 21v17.5A3.5 3.5 0 0 0 13.5 42h21a3.5 3.5 0 0 0 3.5-3.5V21M19 42V29h10v13%27 fill=%27none%27 stroke=%27%237c3aed%27 stroke-width=%273.5%27/%3E%3C/svg%3E">
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <div class="nav-top"><a class="brand" href="./find-pg.html" aria-label="CampusNMIET Home">
+                <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 48 48" role="img"><path d="M7 22.5 24 8l17 14.5v16A3.5 3.5 0 0 1 37.5 42h-27A3.5 3.5 0 0 1 7 38.5v-16Z" fill="currentColor" opacity=".16"/><path d="M5.5 23.5 24 7l18.5 16.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 21v17.5A3.5 3.5 0 0 0 13.5 42h21a3.5 3.5 0 0 0 3.5-3.5V21" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M19 42V29h10v13M16 24h.01M32 24h.01" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>CampusNest</span></a><div class="nav-account"><a class="active login-link" href="./login.html">Login / Register</a><span id="userBadge"></span></div></div>
+            <nav><a href="./index.html">Home</a><a href="./find-pg.html">Find PG</a><a href="./create-vacancy.html">Post Vacancy</a></nav>
+        </div>
+    </header>
+    <main class="auth-wrap">
+        <div class="auth-grid">
+            <section class="auth card">
+                <h1>Student Login</h1>
+                <form id="loginForm"><label>Email<input type="email" name="email" required></label><label>Password<input
+                            type="password" name="password" required></label><button class="btn"
+                        type="submit">Login</button></form>
+                <p id="loginMsg" class="msg"></p>
+                <div class="demo"><b>Demo account</b><br>student@example.com<br>Password: 12345</div>
+            </section>
+            <section class="auth card">
+                <h1>Create Account</h1>
+                <form id="registerForm"><label>Full Name<input name="name" required></label><label>Email<input
+                            type="email" name="email" required></label><label>Password<input type="password"
+                            name="password" minlength="5" required></label><button class="btn secondary"
+                        type="submit">Register</button></form>
+                <p id="registerMsg" class="msg"></p>
+            </section>
+        </div>
+
+        <section id="myVacanciesSection" class="card my-vacancies" hidden>
+            <div class="section-title-row">
+                <div>
+                    <h2>My Published Vacancies</h2>
+                    <p>Manage the PG vacancies you have posted.</p>
+                </div>
+                <a class="btn" href="./create-vacancy.html">+ Post New Vacancy</a>
+            </div>
+            <div id="myVacanciesList" class="my-vacancies-list"></div>
+        </section>
+    </main>
+    <script src="./script.js"></script><script>document.querySelector('.brand span:last-child').textContent = 'CampusNMIET';</script>
+</body>
+</html>
