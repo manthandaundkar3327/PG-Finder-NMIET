@@ -1,4 +1,29 @@
 async function api(url, options = {}) { const r = await fetch(url, { headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }, ...options }); const data = await r.json().catch(() => ({})); if (!r.ok) throw new Error(data.error || 'Request failed'); return data }
+
+function updateThemeToggle() {
+    const isDark = document.body.classList.contains('dark-theme');
+    const button = document.getElementById('themeToggle');
+    if (!button) return;
+    button.setAttribute('aria-pressed', String(isDark));
+    button.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    button.title = isDark ? 'Switch to light theme' : 'Switch to dark theme';
+    button.innerHTML = isDark ? '<span aria-hidden="true">☀</span><span class="theme-label">Light</span>' : '<span aria-hidden="true">☾</span><span class="theme-label">Dark</span>';
+}
+
+function installThemeToggle() {
+    const savedTheme = localStorage.getItem('campusnmiet-theme');
+    if (savedTheme === 'dark') document.body.classList.add('dark-theme');
+    const account = document.querySelector('.nav-account');
+    if (!account) return;
+    account.insertAdjacentHTML('afterbegin', '<button id="themeToggle" class="theme-toggle" type="button"></button>');
+    document.getElementById('themeToggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        localStorage.setItem('campusnmiet-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+        updateThemeToggle();
+    });
+    updateThemeToggle();
+}
+
 async function updateUserBadge() { const el = document.getElementById('userBadge'); if (!el) return; try { const s = await api('/api/session'); if (s.loggedIn) { el.innerHTML = `Hi, ${escapeHtml(s.user.name)} <button class="btn" onclick="logout()">Logout</button>` } else el.textContent = 'Not logged in' } catch { } }
 async function logout() { await api('/api/logout', { method: 'POST' }); location.href = './find-pg.html' }
 
@@ -122,6 +147,8 @@ async function setupEditVacancy() {
     } catch(err){ msg.textContent=err.message; }
 }
 
+installThemeToggle();
+document.querySelectorAll('.brand span:last-child').forEach(el => { el.textContent = 'CampusNMIET'; });
 updateUserBadge(); setupLogin(); setupRegister(); setupVacancy(); setupEditVacancy(); loadMyVacancies();
 if (document.getElementById('pgList')) {
     document.getElementById('refresh').addEventListener('click', loadPGs);
