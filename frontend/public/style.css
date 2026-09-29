@@ -1027,12 +1027,13 @@ body.dark-theme::before { opacity: .22; } body.dark-theme::after { opacity: .25;
     font-size: 13px;
   }
 
-  .nav nav {
+    .nav nav {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 6px;
     padding-top: 6px;
   }
+  .nav nav:not(.has-my-posts) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
   .nav nav a {
     text-align: center;

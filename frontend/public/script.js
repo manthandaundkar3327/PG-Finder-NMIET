@@ -24,7 +24,7 @@ function installThemeToggle() {
     updateThemeToggle();
 }
 
-async function updateUserBadge() { const el = document.getElementById('userBadge'); if (!el) return; try { const s = await api('/api/session'); if (s.loggedIn) { el.innerHTML = `Hi, ${escapeHtml(s.user.name)} <button class="btn" onclick="logout()">Logout</button>` } else el.textContent = 'Not logged in' } catch { } }
+async function updateUserBadge() { const el = document.getElementById('userBadge'); const loginLink = document.querySelector('.login-link'); const myPostsLink = document.querySelector('.my-posts-link'); if (!el && !loginLink && !myPostsLink) return; try { const s = await api('/api/session'); if (loginLink) loginLink.style.display = s.loggedIn ? 'none' : ''; if (myPostsLink) { myPostsLink.hidden = !s.loggedIn; const nav = myPostsLink.closest('nav'); if (nav) nav.classList.toggle('has-my-posts', s.loggedIn); } if (!el) return; if (s.loggedIn) { el.innerHTML = 'Hi, ' + escapeHtml(s.user.name) + ' <button class="btn" onclick="logout()">Logout</button>' } else el.textContent = 'Not logged in' } catch { } }
 async function logout() { await api('/api/logout', { method: 'POST' }); location.href = './find-pg.html' }
 
 async function loadMyVacancies() {
@@ -33,7 +33,7 @@ async function loadMyVacancies() {
     if (!section || !list) return;
     try {
         const session = await api('/api/session');
-        if (!session.loggedIn) { section.hidden = true; return; }
+        if (!session.loggedIn) { location.replace('./login.html'); return; }
         section.hidden = false;
         list.innerHTML = '<div class="empty">Loading your vacancies...</div>';
         const rows = await api('/api/my-pgs');
@@ -57,8 +57,8 @@ async function loadMyVacancies() {
             </article>`;
         }).join('');
     } catch (e) {
-        section.hidden = false;
-        list.innerHTML = `<div class="empty">${escapeHtml(e.message)}</div>`;
+        if (section.hidden) { location.replace('./login.html'); return; }
+        list.innerHTML = '<div class="empty">' + escapeHtml(e.message) + '</div>';
     }
 }
 
